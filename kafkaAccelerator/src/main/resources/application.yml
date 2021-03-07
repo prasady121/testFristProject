@@ -1,0 +1,23 @@
+spring:
+  kafka:
+    client-id: accelerator
+    bootstrap-servers: 3.140.21.45:29092
+    template:
+      default-topic: test
+    producer:
+      bootstrap-servers: 3.140.21.45:29092
+      retries: 3
+      batch-size: 16384
+      buffer-memory: 33554432
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+    consumer:
+      bootstrap-servers: 3.140.21.45:29092
+      group-id: accelerator-consumer
+      enable-auto-commit: true
+      auto-commit-interval: 100
+      auto-offset-reset: earliest
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      
+      
